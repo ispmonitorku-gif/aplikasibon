@@ -2,28 +2,32 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <!-- Konfigurasi PWA & Mobile View -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="theme-color" content="#0056b3">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <title>Bon Operasional</title>
+    <title>Bon Operasional BK1172AFR</title>
     
     <style>
-        /* CSS Reset & Variabel */
         :root {
             --primary: #0056b3;
             --primary-light: #e6f0ff;
             --surface: #ffffff;
-            --bg: #f5f6fa;
-            --text-main: #2d3436;
-            --text-muted: #636e72;
-            --border: #dfe6e9;
-            --radius-card: 16px;
-            --radius-input: 12px;
+            --bg: #f4f6f9;
+            --text-main: #1e272e;
+            --text-muted: #808e9b;
+            --border: #dcdde1;
+            --radius-card: 20px;
+            --radius-input: 14px;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent; 
+        }
 
         body {
             background-color: var(--bg);
@@ -36,59 +40,65 @@
         .app-container {
             width: 100%;
             max-width: 480px;
-            background: var(--bg);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             position: relative;
         }
 
-        /* App Bar Khas Android/iOS */
+        /* Header Bar (Android/iOS Hybrid) */
         .app-bar {
             background: var(--surface);
             padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
             position: sticky;
             top: 0;
             z-index: 10;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .app-bar h1 { font-size: 20px; font-weight: 700; color: var(--primary); }
-        .app-bar p { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+        .app-bar h1 { font-size: 20px; font-weight: 700; color: var(--primary); letter-spacing: -0.3px; }
+        .app-bar p { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
 
-        /* Form Area */
         .form-content {
             padding: 20px;
-            padding-bottom: 100px; /* Space untuk FAB button */
+            padding-bottom: 120px;
         }
 
         .card {
             background: var(--surface);
             border-radius: var(--radius-card);
             padding: 24px 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        /* Material Floating Input */
+        /* Input Mengambang / Floating Label */
         .input-group { position: relative; }
         
         .input-group input, .input-group select, .input-group textarea {
             width: 100%;
             padding: 16px;
             font-size: 15px;
-            border: 1px solid var(--border);
+            border: 1.5px solid var(--border);
             border-radius: var(--radius-input);
             background: var(--surface);
             outline: none;
-            transition: all 0.3s;
+            transition: all 0.25s ease;
             color: var(--text-main);
         }
 
-        .input-group select { appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23636e72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 16px center; background-size: 16px; }
-        .input-group textarea { resize: vertical; min-height: 80px; }
+        .input-group select { 
+            appearance: none; 
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808e9b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); 
+            background-repeat: no-repeat; 
+            background-position: right 16px center; 
+            background-size: 16px; 
+        }
+
+        .input-group textarea { resize: vertical; min-height: 85px; }
 
         .input-group label {
             position: absolute;
@@ -98,14 +108,13 @@
             background: var(--surface);
             color: var(--text-muted);
             font-size: 15px;
-            transition: 0.3s ease all;
+            transition: 0.25s ease all;
             pointer-events: none;
-            padding: 0 4px;
+            padding: 0 6px;
         }
 
         .input-group textarea ~ label { top: 24px; }
 
-        /* Animasi Label Naik (Floating) */
         .input-group input:focus, .input-group input:not(:placeholder-shown),
         .input-group textarea:focus, .input-group textarea:not(:placeholder-shown),
         .input-group select:focus, .input-group select:valid {
@@ -122,7 +131,7 @@
             font-weight: 600;
         }
 
-        /* Area Upload Foto */
+        /* Area Kamera / Upload Foto */
         .file-upload {
             border: 2px dashed var(--primary);
             border-radius: var(--radius-input);
@@ -131,14 +140,14 @@
             text-align: center;
             position: relative;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
         }
         .file-upload:active { transform: scale(0.98); }
         .file-upload input[type="file"] { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer; }
         .file-icon { font-size: 32px; margin-bottom: 8px; display: block; }
         .file-text { font-size: 14px; font-weight: 600; color: var(--primary); }
 
-        /* Tombol Mengambang (FAB style) */
+        /* Floating Bottom Action */
         .bottom-action {
             position: fixed;
             bottom: 0;
@@ -146,7 +155,7 @@
             width: 100%;
             padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
             background: var(--surface);
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
             display: flex;
             justify-content: center;
             z-index: 20;
@@ -159,37 +168,31 @@
             color: white;
             border: none;
             padding: 16px;
-            border-radius: 100px; /* Pill shape khas Material 3 / iOS */
+            border-radius: 100px;
             font-size: 16px;
             font-weight: 700;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 8px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
+            box-shadow: 0 4px 14px rgba(0, 86, 179, 0.35);
+            cursor: pointer;
+            transition: transform 0.1s;
         }
 
-        /* Ripple Effect */
-        .btn-submit::after {
-            content: ''; position: absolute; width: 100%; height: 100%;
-            top: 0; left: 0; background: rgba(255,255,255,0.2);
-            opacity: 0; transition: opacity 0.3s;
-        }
-        .btn-submit:active::after { opacity: 1; }
+        .btn-submit:active { transform: scale(0.98); }
 
-        /* Loading Overlay */
+        /* Loader Overlay */
         .loader-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.8); backdrop-filter: blur(4px);
+            background: rgba(255,255,255,0.88); backdrop-filter: blur(6px);
             z-index: 100; display: none; flex-direction: column;
             justify-content: center; align-items: center;
         }
         .spinner {
-            width: 40px; height: 40px; border: 4px solid var(--primary-light);
+            width: 42px; height: 42px; border: 4px solid var(--primary-light);
             border-top: 4px solid var(--primary); border-radius: 50%;
-            animation: spin 1s linear infinite; margin-bottom: 16px;
+            animation: spin 0.8s linear infinite; margin-bottom: 16px;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
@@ -197,20 +200,17 @@
 <body>
 
     <div class="app-container">
-        <!-- App Bar -->
         <div class="app-bar">
             <h1>Input Bon Operasional</h1>
             <p>Kendaraan BK1172AFR</p>
         </div>
 
-        <!-- Form Area -->
         <div class="form-content">
             <form id="bonForm">
                 <div class="card">
                     
                     <div class="input-group">
-                        <!-- Type text dengan fungsi date agar placeholder tampil -->
-                        <input type="text" id="tanggal" placeholder=" " onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                        <input type="text" id="tanggal" placeholder=" " onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" required>
                         <label>Tanggal Pelaksanaan</label>
                     </div>
 
@@ -221,7 +221,7 @@
 
                     <div class="input-group">
                         <textarea id="keperluan" placeholder=" " required></textarea>
-                        <label>Detail Keperluan</label>
+                        <label>Detail Keperluan / Pekerjaan</label>
                     </div>
 
                     <div class="input-group">
@@ -254,44 +254,66 @@
             </form>
         </div>
 
-        <!-- Sticky Bottom Button -->
         <div class="bottom-action">
             <button type="submit" form="bonForm" class="btn-submit">
                 Kirim Data Bon
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
             </button>
         </div>
     </div>
 
-    <!-- Loading Screen -->
     <div class="loader-overlay" id="loader">
         <div class="spinner"></div>
-        <h3 style="color: var(--primary); font-size: 16px;">Mengunggah Data...</h3>
+        <h3 style="color: var(--primary); font-size: 16px;">Mengompres & Mengirim Data...</h3>
         <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">Mohon tunggu sebentar</p>
     </div>
 
     <script>
-        // GANTI URL INI DENGAN URL WEB APP GOOGLE APPS SCRIPT ANDA
-        const GAS_URL = "https://script.google.com/macros/s/AKfycby1ke9JruxXl_q1jdT1HW0VMv06EItlt1I16bgyiLXTSKN0ThT4ksdO_T2vthW3w2Ea/exec";
+        // MASUKKAN URL WEB APP HASIL DEPLOY APPS SCRIPT ANDA DI SINI
+        const GAS_URL = "https://script.google.com/macros/s/AKfycby0xLFHEtUDGG2rkn5hGFu5BxH2pyugOyHV59XPYlkOZU7Bk5Fia3Wbu8HCrA2Qnmjc/exec";
 
-        // Ganti teks label saat foto berhasil diambil dari kamera
+        // Kompresi foto otomatis (mencegah error kiriman ukuran file besar)
+        function compressImage(file, maxWidth, quality, callback) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > maxWidth) {
+                        height = Math.round((height * maxWidth) / width);
+                        width = maxWidth;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    const dataUrl = canvas.toDataURL('image/jpeg', quality);
+                    callback(dataUrl);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
         document.getElementById('fotoBon').addEventListener('change', function(e) {
             if(e.target.files.length > 0) {
-                document.getElementById('fileLabel').innerText = "✅ " + e.target.files[0].name;
+                document.getElementById('fileLabel').innerText = "✅ Foto Terpilih: " + e.target.files[0].name;
                 document.querySelector('.file-upload').style.background = "#e6ffed";
                 document.querySelector('.file-upload').style.borderColor = "#28a745";
             }
         });
 
-        // Proses Submit Form
         document.getElementById('bonForm').addEventListener('submit', function(e) {
             e.preventDefault();
             document.getElementById('loader').style.display = 'flex';
 
             const fileInput = document.getElementById('fotoBon').files[0];
-            const reader = new FileReader();
 
-            reader.onload = function() {
+            compressImage(fileInput, 1024, 0.7, function(base64Image) {
                 const payload = {
                     tanggal: document.getElementById('tanggal').value,
                     user: document.getElementById('user').value,
@@ -299,12 +321,11 @@
                     tujuan: document.getElementById('tujuan').value,
                     jenisBon: document.getElementById('jenisBon').value,
                     jumlah: document.getElementById('jumlah').value,
-                    fotoBase64: reader.result,
-                    fotoMimeType: fileInput.type,
-                    fotoName: fileInput.name
+                    fotoBase64: base64Image,
+                    fotoMimeType: 'image/jpeg',
+                    fotoName: 'bon_' + Date.now() + '.jpg'
                 };
 
-                // Menggunakan mode text/plain untuk menghindari CORS Preflight issue di Google Script
                 fetch(GAS_URL, {
                     method: 'POST',
                     headers: {
@@ -316,24 +337,21 @@
                 .then(data => {
                     document.getElementById('loader').style.display = 'none';
                     if (data.status === "success") {
-                        alert('✅ Berhasil! Data bon telah tersimpan di Excel/Sheets.');
+                        alert('✅ Berhasil! Data bon tersimpan.');
                         document.getElementById('bonForm').reset();
-                        // Kembalikan style upload foto ke semula
                         document.getElementById('fileLabel').innerText = "Ketuk untuk Ambil Foto Bon";
                         document.querySelector('.file-upload').style.background = "var(--primary-light)";
                         document.querySelector('.file-upload').style.borderColor = "var(--primary)";
                     } else {
-                        alert('⚠️ Gagal menyimpan: ' + data.message);
+                        alert('⚠️ Gagal: ' + data.message);
                     }
                 })
                 .catch(error => {
                     document.getElementById('loader').style.display = 'none';
-                    alert('Terjadi kesalahan jaringan. Silakan coba lagi.');
+                    alert('Terjadi kesalahan jaringan.');
                     console.error(error);
                 });
-            };
-
-            reader.readAsDataURL(fileInput);
+            });
         });
     </script>
 </body>
