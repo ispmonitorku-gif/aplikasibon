@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="theme-color" content="#ffffff">
-    <title>Sistem Operasional BK1172AFR</title>
+    <title>Aplikasi Bon Tim BK1172AFR</title>
     
     <style>
         :root {
@@ -25,50 +25,50 @@
 
         .app-container { width: 100%; max-width: 480px; position: relative; padding-bottom: 100px; }
 
-        /* Header Premium */
+        /* Header Ringan */
         .header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 24px 20px 16px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 20px 20px 16px;
             position: sticky; top: 0; z-index: 10;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            display: flex; align-items: center; gap: 16px;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            display: flex; align-items: center; gap: 14px;
         }
         .header-icon {
-            width: 48px; height: 48px; border-radius: 14px;
+            width: 42px; height: 42px; border-radius: 12px;
             background: var(--primary-gradient);
             display: flex; align-items: center; justify-content: center;
-            font-size: 24px; color: white; box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+            font-size: 20px; color: white; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
-        .header-text h1 { font-size: 20px; font-weight: 700; color: var(--text-main); letter-spacing: -0.5px; line-height: 1.2; }
-        .header-text p { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+        .header-text h1 { font-size: 18px; font-weight: 700; color: var(--text-main); letter-spacing: -0.3px; }
+        .header-text p { font-size: 13px; color: var(--text-muted); font-weight: 500; }
 
-        .form-content { padding: 20px; }
+        .form-content { padding: 16px 20px; }
 
         .card {
             background: var(--surface); border-radius: var(--radius-card); padding: 24px 20px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.04); display: flex; flex-direction: column; gap: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); display: flex; flex-direction: column; gap: 18px;
         }
 
         /* Input Fields */
         .input-group { position: relative; }
         
         .input-group input, .input-group select, .input-group textarea {
-            width: 100%; padding: 18px 16px; font-size: 15px; font-weight: 500;
-            border: 2px solid var(--border); border-radius: var(--radius-input);
-            background: var(--surface); outline: none; transition: all 0.3s ease; color: var(--text-main);
+            width: 100%; padding: 16px 14px; font-size: 15px; font-weight: 500;
+            border: 1.5px solid var(--border); border-radius: var(--radius-input);
+            background: var(--surface); outline: none; transition: all 0.2s ease; color: var(--text-main);
         }
 
-        .input-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9L12 15L18 9' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
-        .input-group textarea { resize: vertical; min-height: 100px; }
+        .input-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9L12 15L18 9' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+        .input-group textarea { resize: vertical; min-height: 80px; }
 
         .input-group label {
-            position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
-            background: var(--surface); color: var(--text-muted); font-size: 15px; font-weight: 500;
-            transition: 0.3s ease all; pointer-events: none; padding: 0 6px; margin-top: -1px;
+            position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+            background: var(--surface); color: var(--text-muted); font-size: 14px; font-weight: 500;
+            transition: 0.2s ease all; pointer-events: none; padding: 0 4px; margin-top: -1px;
         }
-        .input-group textarea ~ label { top: 26px; }
+        .input-group textarea ~ label { top: 24px; }
 
         .input-group input:focus, .input-group input:not(:placeholder-shown),
         .input-group textarea:focus, .input-group textarea:not(:placeholder-shown),
@@ -77,50 +77,57 @@
         .input-group input:focus ~ label, .input-group input:not(:placeholder-shown) ~ label,
         .input-group textarea:focus ~ label, .input-group textarea:not(:placeholder-shown) ~ label,
         .input-group select:focus ~ label, .input-group select:valid ~ label {
-            top: 0; font-size: 13px; color: var(--primary); font-weight: 700;
+            top: 0; font-size: 12px; color: var(--primary); font-weight: 700;
         }
 
-        /* Image Upload Area */
+        /* Area Upload Foto - Kamera & Galeri */
         .file-upload {
             border: 2px dashed #cbd5e1; border-radius: var(--radius-input); background: #f8fafc;
-            padding: 32px 20px; text-align: center; position: relative; cursor: pointer; transition: all 0.3s ease;
+            padding: 28px 16px; text-align: center; position: relative; cursor: pointer; transition: all 0.2s ease;
             overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
         .file-upload input[type="file"] { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer; z-index: 2; }
-        .file-icon { font-size: 40px; margin-bottom: 12px; transition: 0.3s; }
-        .file-text { font-size: 15px; font-weight: 600; color: var(--text-main); }
-        .file-subtext { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+        .file-icon { font-size: 36px; margin-bottom: 8px; transition: 0.3s; }
+        .file-text { font-size: 14px; font-weight: 600; color: var(--text-main); }
+        .file-subtext { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
         
         #imagePreview {
             display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0;
-            object-fit: cover; z-index: 1; border-radius: calc(var(--radius-input) - 2px);
-            opacity: 0.8;
+            object-fit: cover; z-index: 1; border-radius: calc(var(--radius-input) - 2px); opacity: 0.9;
         }
 
         /* Bottom Action Bar */
         .bottom-action {
             position: fixed; bottom: 0; left: 0; width: 100%;
-            padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
-            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.05); display: flex; justify-content: center; z-index: 20; border-top: 1px solid rgba(0,0,0,0.05);
+            padding: 14px 20px calc(14px + env(safe-area-inset-bottom));
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.06); display: flex; justify-content: center; z-index: 20;
         }
 
         .btn-submit {
             width: 100%; max-width: 440px; background: var(--primary-gradient); color: white;
-            border: none; padding: 18px; border-radius: 100px; font-size: 16px; font-weight: 700;
+            border: none; padding: 16px; border-radius: 100px; font-size: 16px; font-weight: 700;
             display: flex; justify-content: center; align-items: center; gap: 8px;
-            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3); cursor: pointer; transition: all 0.2s;
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25); cursor: pointer; transition: all 0.15s;
         }
-        .btn-submit:active { transform: scale(0.97); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); }
+        .btn-submit:active { transform: scale(0.96); box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2); }
 
-        /* Loader */
+        /* Loader Ringan & Cepat (Lightweight Toast Style) */
         .loader-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.9); backdrop-filter: blur(8px);
-            z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center;
+            background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(2px);
+            z-index: 100; display: none; justify-content: center; align-items: center;
         }
-        .spinner { width: 48px; height: 48px; border: 4px solid #e2e8f0; border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 20px; }
+        .loader-card {
+            background: white; padding: 20px 32px; border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; gap: 12px;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .spinner { width: 34px; height: 34px; border: 3px solid #f1f5f9; border-top: 3px solid var(--primary); border-radius: 50%; animation: spin 0.6s linear infinite; }
+        .loader-text { font-size: 14px; font-weight: 700; color: var(--text-main); }
+        
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes popIn { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
     </style>
 </head>
 <body>
@@ -129,7 +136,7 @@
         <div class="header">
             <div class="header-icon">🚐</div>
             <div class="header-text">
-                <h1>Operasional Bon</h1>
+                <h1>Bon Operasional</h1>
                 <p>Kendaraan BK1172AFR</p>
             </div>
         </div>
@@ -143,7 +150,6 @@
                         <label>Tanggal Pelaksanaan</label>
                     </div>
 
-                    <!-- DROPDOWN USER SESUAI PERMINTAAN -->
                     <div class="input-group">
                         <select id="user" required>
                             <option value="" disabled selected hidden></option>
@@ -181,12 +187,14 @@
                         <label>Total Biaya (Rp)</label>
                     </div>
 
+                    <!-- Input File tanpa "capture" agar bisa pilih Galeri atau Kamera -->
                     <div class="file-upload" id="uploadArea">
                         <img id="imagePreview" alt="Preview">
                         <div class="file-icon" id="fileIcon">📸</div>
-                        <div class="file-text" id="fileText">Ambil Foto Bon</div>
-                        <div class="file-subtext" id="fileSub">Ketuk untuk membuka kamera</div>
-                        <input type="file" id="fotoBon" accept="image/*" capture="environment" required>
+                        <div class="file-text" id="fileText">Kamera / Galeri HP</div>
+                        <div class="file-subtext" id="fileSub">Ketuk untuk mengambil foto bon</div>
+                        <!-- Atribut capture="environment" telah dihapus -->
+                        <input type="file" id="fotoBon" accept="image/*" required>
                     </div>
 
                 </div>
@@ -200,17 +208,19 @@
         </div>
     </div>
 
+    <!-- Tampilan Loading Baru: Lebih Ringan & Modern -->
     <div class="loader-overlay" id="loader">
-        <div class="spinner"></div>
-        <h3 style="color: var(--text-main); font-size: 18px; font-weight: 700;">Memproses Data...</h3>
-        <p style="color: var(--text-muted); font-size: 14px; margin-top: 8px;">Jangan tutup aplikasi</p>
+        <div class="loader-card">
+            <div class="spinner"></div>
+            <div class="loader-text">Menyimpan...</div>
+        </div>
     </div>
 
     <script>
-        // MASUKKAN URL WEB APP ANDA DI SINI
+        // MASUKKAN URL WEB APP GOOGLE APPS SCRIPT ANDA DI SINI
         const GAS_URL = "https://script.google.com/macros/s/AKfycbx-OfzCFSKb4cHnsowXDVJV4TPhh7s9Qs_nFBpRqYxSuIAijp9rwO3x3iB2K-ZBMM4/exec";
 
-        // Preview dan UI Feedback untuk Foto
+        // Fitur Preview Gambar Instan
         document.getElementById('fotoBon').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if(file) {
@@ -220,17 +230,17 @@
                     preview.src = e.target.result;
                     preview.style.display = 'block';
                     
-                    // Style adjustments when image selected
                     document.getElementById('uploadArea').style.borderColor = "var(--primary)";
                     document.getElementById('fileIcon').style.opacity = '0';
-                    document.getElementById('fileText').innerHTML = '<span style="background: rgba(255,255,255,0.9); padding: 4px 12px; border-radius: 20px; position: relative; z-index: 3;">✅ Foto Siap</span>';
+                    document.getElementById('fileText').innerHTML = '<span style="background: rgba(255,255,255,0.9); padding: 4px 12px; border-radius: 20px; position: relative; z-index: 3; color: var(--primary);">✅ Foto Terpilih</span>';
                     document.getElementById('fileSub').style.display = 'none';
                 }
                 reader.readAsDataURL(file);
             }
         });
 
-        function compressImage(file, maxWidth, quality, callback) {
+        // Script Kompresi Gambar Cepat (Ringan)
+        function compressImageFast(file, maxWidth, quality, callback) {
             const reader = new FileReader();
             reader.onload = function(e) {
                 const img = new Image();
@@ -249,13 +259,17 @@
             reader.readAsDataURL(file);
         }
 
+        // Proses Pengiriman Form
         document.getElementById('bonForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Tampilkan animasi loading ringan
             document.getElementById('loader').style.display = 'flex';
 
             const fileInput = document.getElementById('fotoBon').files[0];
 
-            compressImage(fileInput, 1024, 0.7, function(base64Image) {
+            // Proses kompresi dan kirim
+            compressImageFast(fileInput, 1024, 0.6, function(base64Image) {
                 const payload = {
                     tanggal: document.getElementById('tanggal').value,
                     user: document.getElementById('user').value,
@@ -276,14 +290,15 @@
                 .then(data => {
                     document.getElementById('loader').style.display = 'none';
                     if (data.status === "success") {
-                        alert('✅ Berhasil!\nData bon masuk ke ' + data.message.split(': ')[1]);
+                        // Notifikasi simpel dari browser
+                        alert('✅ Berhasil dikirim!');
                         
-                        // Reset Form UI
+                        // Kembalikan form ke kondisi semula
                         document.getElementById('bonForm').reset();
                         document.getElementById('imagePreview').style.display = 'none';
                         document.getElementById('uploadArea').style.borderColor = "#cbd5e1";
                         document.getElementById('fileIcon').style.opacity = '1';
-                        document.getElementById('fileText').innerHTML = 'Ambil Foto Bon';
+                        document.getElementById('fileText').innerHTML = 'Kamera / Galeri HP';
                         document.getElementById('fileSub').style.display = 'block';
                     } else {
                         alert('⚠️ Gagal: ' + data.message);
